@@ -2,7 +2,7 @@ export class Course {
   id: number;
   name: string;
   description: string;
-  imageURL: string;
+  imageUrl: string;
   price: number;
   code: string;
   duration: number;

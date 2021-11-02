@@ -13,8 +13,7 @@ export class CourseListComponent {
   constructor(private readonly courseService: CourseService) {}
 
   ngOnInit(): void {
-    this.courses = this.courseService.getAll();
-    this.filteredCourses = this.courses;
+    this.getAll()
   }
 
   set filter(value: string) {
@@ -26,5 +25,22 @@ export class CourseListComponent {
 
   get filter() {
     return this.filterBy;
+  }
+
+  getAll(){
+    this.courseService.getAll().subscribe({
+      next: (courses) => {
+        this.courses = courses;
+        this.filteredCourses = courses;
+      },
+      error: (err) => console.error(err),
+    });
+  }
+
+  deleteById(id: number){
+    this.courseService.deleteById(id).subscribe({
+      next: ()=> this.getAll(),
+      error: (err) => console.error(err)      
+    })
   }
 }
