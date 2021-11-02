@@ -4,17 +4,15 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { CourseModule } from './courses/course.module';
-import { NotFoundErrorComponent } from './errors/not-found-error/not-found-error.component';
 
 @NgModule({
-  declarations: [AppComponent, NotFoundErrorComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    CoreModule,
     CourseModule,
+    CoreModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'courses', pathMatch: 'full' },
-      { path: '**', component: NotFoundErrorComponent },
     ]),
   ],
   providers: [],
